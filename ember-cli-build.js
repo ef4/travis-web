@@ -90,5 +90,6 @@ module.exports = function () {
     destDir: '/images/emoji'
   });
 
-  return app.toTree(emojiAssets);
+  app.toTree(emojiAssets);
+  return app.prebuildV1Addons();
 };
