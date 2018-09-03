@@ -12,6 +12,12 @@
             "args": [
               "build"
             ]
-        }
+        },
+        {
+          "type": "node",
+          "request": "launch",
+          "name": "VBuild travis-web",
+          "program": "${workspaceFolder}/vbuild.js",
+      }
     ]
 }
