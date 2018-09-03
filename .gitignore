@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/vanilla-dist
 /tmp
 
 # dependencies
