@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /vanilla-dist
+vbuild.log
 /tmp
 
 # dependencies
