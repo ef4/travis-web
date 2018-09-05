@@ -54,7 +54,7 @@
     "ember-cli-uglify": "^2.0.0",
     "ember-cli-vanilla": "*",
     "ember-composable-helpers": "^2.1.0",
-    "ember-concurrency": "^0.8.15",
+    "ember-concurrency": "git+https://github.com/ef4/ember-concurrency#13d0d6c86be8215a6dbf631197eba65bc1f361f3",
     "ember-data": "~3.0.0",
     "ember-data-filter": "1.13.0",
     "ember-decorators": "^1.3.4",
