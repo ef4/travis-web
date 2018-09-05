@@ -1,6 +1,13 @@
 /* eslint-env node */
 /* eslint-disable no-console */
-const { Webpack } = require('ember-webpack');
+const { webpack } = require('ember-webpack');
+
+let Webpack = webpack({
+  // workaround for https://github.com/jeremyfa/yaml.js/issues/102
+  node: {
+    fs: 'empty'
+  }
+});
 
 let w = new Webpack(
   __dirname + '/vanilla-dist/travis-web',
