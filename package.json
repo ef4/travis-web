@@ -53,7 +53,7 @@
     "ember-cli-test-loader": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
     "ember-cli-vanilla": "*",
-    "ember-composable-helpers": "^2.1.0",
+    "ember-composable-helpers": "git+https://github.com/ef4/ember-composable-helpers.git#bd3f6b18099986a8ff5f045b054ae3f63cd00245",
     "ember-concurrency": "git+https://github.com/ef4/ember-concurrency#13d0d6c86be8215a6dbf631197eba65bc1f361f3",
     "ember-data": "~3.0.0",
     "ember-data-filter": "1.13.0",
