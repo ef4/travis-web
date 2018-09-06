@@ -3,7 +3,8 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 // const Funnel = require('broccoli-funnel');
 const SVGO = require('svgo');
-const { vanillaBuild } = require('ember-cli-vanilla');
+const { App: VanillaApp } = require('ember-cli-vanilla');
+const { webpack } = require('ember-webpack');
 
 module.exports = function () {
   let fingerprint;
@@ -91,5 +92,22 @@ module.exports = function () {
   //   destDir: '/images/emoji'
   // });
 
-  return vanillaBuild(app, 'vanilla-dist');
+  let vanillaApp = new VanillaApp(app.project.root, {
+    workspaceDir: 'vanilla-dist',
+    legacyAppInstance: app,
+    emitNewRoot(root) {
+      console.log(`Vanilla app built in ${root}`); // eslint-disable-line no-console
+    }
+  });
+
+  if (process.env.FULL) {
+    return vanillaApp.packageWith(webpack({
+      // workaround for https://github.com/jeremyfa/yaml.js/issues/102
+      node: {
+        fs: 'empty'
+      }
+    }));
+  } else {
+    return vanillaApp.vanillaTree;
+  }
 };
