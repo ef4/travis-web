@@ -4,7 +4,7 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 // const Funnel = require('broccoli-funnel');
 const SVGO = require('svgo');
 const { App: VanillaApp } = require('ember-cli-vanilla');
-const { webpack } = require('ember-webpack');
+const webpack = require('ember-webpack');
 
 module.exports = function () {
   let fingerprint;
