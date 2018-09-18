@@ -394,12 +394,12 @@ Log.Span.prototype = Log.extend(new Log.Node, {
     return ((_ref = this.element) != null ? _ref.parentNode : void 0) === ((_ref1 = other.element) != null ? _ref1.parentNode : void 0);
   },
   siblings: function (type) {
-    let siblings, span;
-    siblings = [];
+    let _siblings, span;
+    _siblings = [];
     while ((span = (span || this)[type]) && this.isSibling(span)) {
-      siblings.push(span);
+      _siblings.push(span);
     }
-    return siblings;
+    return _siblings;
   }
 });
 
@@ -755,16 +755,16 @@ Log.extend(Log.Folds.Fold.prototype, {
     return this.active = true;
   },
   classes: function (autoCloseFold) {
-    let classes;
-    classes = this.fold.getAttribute('class').split(' ');
-    classes.push('fold');
+    let _classes;
+    _classes = this.fold.getAttribute('class').split(' ');
+    _classes.push('fold');
     if (!autoCloseFold) {
-      classes.push('open');
+      _classes.push('open');
     }
     if (this.fold.childNodes.length > 2) {
-      classes.push('active');
+      _classes.push('active');
     }
-    return classes.join(' ');
+    return _classes.join(' ');
   }
 });
 
@@ -873,8 +873,8 @@ Log.Deansi = {
     return ansiparse(string).map(part => this.node(part));
   },
   node: function (part) {
-    let classes, node;
-    node = {
+    let classes, _node;
+    _node = {
       type: 'span',
       text: part.text
     };
@@ -882,9 +882,9 @@ Log.Deansi = {
     classes = this.classes(part);
 
     if (classes) {
-      node['class'] = classes.join(' ');
+      _node['class'] = classes.join(' ');
     }
-    return node;
+    return _node;
   },
   classes: function (part) {
     let result;
@@ -895,24 +895,24 @@ Log.Deansi = {
     }
   },
   colors: function (part) {
-    let colors;
-    colors = [];
+    let _colors;
+    _colors = [];
     if (part.foreground) {
-      colors.push(part.foreground);
+      _colors.push(part.foreground);
     }
     if (part.background) {
-      colors.push(`bg-${part.background}`);
+      _colors.push(`bg-${part.background}`);
     }
     if (part.bold) {
-      colors.push('bold');
+      _colors.push('bold');
     }
     if (part.italic) {
-      colors.push('italic');
+      _colors.push('italic');
     }
     if (part.underline) {
-      colors.push('underline');
+      _colors.push('underline');
     }
-    return colors;
+    return _colors;
   },
   hidden: function (part) {
     if (part.text.match(/\r/)) {
