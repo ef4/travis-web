@@ -1,7 +1,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-// const Funnel = require('broccoli-funnel');
+const Funnel = require('broccoli-funnel');
 const SVGO = require('svgo');
 const { App: VanillaApp } = require('ember-cli-vanilla');
 const webpack = require('ember-webpack');
@@ -88,13 +88,14 @@ module.exports = function () {
 
   app.import('node_modules/timeago/jquery.timeago.js');
 
-  // const emojiAssets = new Funnel('node_modules/emoji-datasource-apple/img/apple/64', {
-  //   destDir: '/images/emoji'
-  // });
+  const emojiAssets = new Funnel('node_modules/emoji-datasource-apple/img/apple/64', {
+    destDir: '/images/emoji'
+  });
 
   let vanillaApp = new VanillaApp(app.project.root, {
     workspaceDir: 'vanilla-dist',
     legacyAppInstance: app,
+    extraPublicTrees: [emojiAssets],
     emitNewRoot(root) {
       console.log(`Vanilla app built in ${root}`); // eslint-disable-line no-console
     }
