@@ -18,7 +18,7 @@ let w = new Webpack(
   // when you do the complete run this doesn't matter, because we thread the
   // proper path through for you. But this standalone script is useful for
   // testing, and it doesn't have a good way to find the app automatically.
-  __dirname + '/vanilla-dist',
+  '/tmp/vanilla-dist',
 
   __dirname + '/dist',
   function (msg) {
