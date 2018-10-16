@@ -1,6 +1,6 @@
 /* eslint-env node */
 /* eslint-disable no-console */
-const webpack = require('ember-webpack');
+const webpack = require('@embroider/webpack');
 
 let Webpack = webpack({
   // workaround for https://github.com/jeremyfa/yaml.js/issues/102

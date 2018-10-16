@@ -3,8 +3,8 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const Funnel = require('broccoli-funnel');
 const SVGO = require('svgo');
-const { App: VanillaApp } = require('ember-cli-vanilla');
-const webpack = require('ember-webpack');
+const { App: VanillaApp } = require('@embroider/core');
+const webpack = require('@embroider/webpack');
 
 module.exports = function () {
   let fingerprint;
