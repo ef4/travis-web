@@ -92,7 +92,7 @@ module.exports = function () {
     destDir: '/images/emoji'
   });
 
-  let vanillaApp = new VanillaApp(app.project.root, {
+  let vanillaApp = VanillaApp.create(app.project.root, {
     workspaceDir: '/tmp/vanilla-dist',
     legacyAppInstance: app,
     extraPublicTrees: [emojiAssets],
