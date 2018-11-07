@@ -3,8 +3,11 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const Funnel = require('broccoli-funnel');
 const SVGO = require('svgo');
-const { App: EmbroiderApp, CompatWorkspace } = require('@embroider/core');
-const webpack = require('@embroider/webpack');
+
+// I want to assemble my embroider stages in TS, just to make sure I'm getting
+// the types right.
+require('ts-node').register({ /* options */ });
+const embroider = require('./embroider.ts').default;
 
 module.exports = function () {
   let fingerprint;
@@ -92,25 +95,5 @@ module.exports = function () {
     destDir: '/images/emoji'
   });
 
-  let workspace = new CompatWorkspace(app, {
-    workspaceDir: '/tmp/vanilla-dist',
-    emitNewRoot(root) {
-      console.log(`Vanilla app built in ${root}`); // eslint-disable-line no-console
-    },
-  });
-
-  let embroiderApp = new EmbroiderApp(workspace, {
-    extraPublicTrees: [emojiAssets],
-  });
-
-  if (process.env.FULL) {
-    return embroiderApp.packageWith(webpack({
-      // workaround for https://github.com/jeremyfa/yaml.js/issues/102
-      node: {
-        fs: 'empty'
-      }
-    }));
-  } else {
-    return embroiderApp.vanillaTree;
-  }
+  return embroider(app, [emojiAssets]);
 };
