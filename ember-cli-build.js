@@ -3,7 +3,7 @@
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const Funnel = require('broccoli-funnel');
 const SVGO = require('svgo');
-const { App: VanillaApp } = require('@embroider/core');
+const { App: EmbroiderApp, CompatWorkspace } = require('@embroider/core');
 const webpack = require('@embroider/webpack');
 
 module.exports = function () {
@@ -92,23 +92,25 @@ module.exports = function () {
     destDir: '/images/emoji'
   });
 
-  let vanillaApp = VanillaApp.create(app.project.root, {
+  let workspace = new CompatWorkspace(app, {
     workspaceDir: '/tmp/vanilla-dist',
-    legacyAppInstance: app,
-    extraPublicTrees: [emojiAssets],
     emitNewRoot(root) {
       console.log(`Vanilla app built in ${root}`); // eslint-disable-line no-console
-    }
+    },
+  });
+
+  let embroiderApp = new EmbroiderApp(workspace, {
+    extraPublicTrees: [emojiAssets],
   });
 
   if (process.env.FULL) {
-    return vanillaApp.packageWith(webpack({
+    return embroiderApp.packageWith(webpack({
       // workaround for https://github.com/jeremyfa/yaml.js/issues/102
       node: {
         fs: 'empty'
       }
     }));
   } else {
-    return vanillaApp.vanillaTree;
+    return embroiderApp.vanillaTree;
   }
 };
