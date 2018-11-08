@@ -29,3 +29,8 @@ package.json.ember-try
 
 # vs code JavaScript config file
 jsconfig.json
+
+# this gets built from TS
+embroider.js
+embroider.js.map
+embroider.d.ts

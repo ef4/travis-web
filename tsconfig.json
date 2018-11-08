@@ -10,11 +10,15 @@
     "experimentalDecorators": true,
     "allowUnreachableCode": false,
     "noImplicitThis": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "typeRoots": ["types"],
   },
   "exclude": [
     "node_modules",
     "tmp",
     "dist",
+  ],
+  "files": [
+    "embroider.ts"
   ]
 }

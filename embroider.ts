@@ -1,8 +1,9 @@
 import { App, CompatWorkspace, toBroccoliPlugin } from '@embroider/core';
 import { Webpack } from '@embroider/webpack';
+import { Tree } from 'broccoli-plugin';
 const BroccoliWebpack = toBroccoliPlugin(Webpack);
 
-export default function(emberApp: unknown, extraPublicTrees: unknown[]) {
+export default function(emberApp: unknown, extraPublicTrees: Tree[]) {
   let workspace = new CompatWorkspace(emberApp, {
     workspaceDir: '/tmp/vanilla-dist',
     emitNewRoot(root) {

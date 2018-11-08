@@ -4,11 +4,6 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const Funnel = require('broccoli-funnel');
 const SVGO = require('svgo');
 
-// I want to assemble my embroider stages in TS, just to make sure I'm getting
-// the types right.
-require('ts-node').register({ /* options */ });
-const embroider = require('./embroider.ts').default;
-
 module.exports = function () {
   let fingerprint;
 
@@ -95,5 +90,10 @@ module.exports = function () {
     destDir: '/images/emoji'
   });
 
+  if (process.env.CLASSIC) {
+    return app.toTree(emojiAssets);
+  }
+
+  const embroider = require('./embroider').default;
   return embroider(app, [emojiAssets]);
 };
