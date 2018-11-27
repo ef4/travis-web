@@ -11,9 +11,9 @@ export default function(emberApp: object, extraPublicTrees: Tree[]) {
   } else {
     workspace = new CompatWorkspace(emberApp, {
       workspaceDir: '/tmp/vanilla-dist',
-      emitNewRoot(root) {
-        console.log(`Vanilla app built in ${root}`); // eslint-disable-line no-console
-      },
+    });
+    workspace.ready().then(result => {
+      console.log(`Building app in ${result.appDestDir}`);
     });
   }
 
