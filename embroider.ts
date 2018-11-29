@@ -1,27 +1,27 @@
-import { App, Workspace as CompatWorkspace } from '@embroider/compat';
-import { toBroccoliPlugin, PrebuiltWorkspace } from '@embroider/core';
+import { App, Addons as CompatAddons } from '@embroider/compat';
+import { toBroccoliPlugin, PrebuiltAddons } from '@embroider/core';
 import { Webpack } from '@embroider/webpack';
 import { Tree } from 'broccoli-plugin';
 const BroccoliWebpack = toBroccoliPlugin(Webpack);
 
 export default function(emberApp: object, extraPublicTrees: Tree[]) {
-  let workspace;
+  let addons;
   if (process.env.REUSE_WORKSPACE) {
-    workspace = new PrebuiltWorkspace(__dirname, '/tmp/vanilla-dist');
+    addons = new PrebuiltAddons(__dirname, '/tmp/vanilla-dist');
   } else {
-    workspace = new CompatWorkspace(emberApp, {
+    addons = new CompatAddons(emberApp, {
       workspaceDir: '/tmp/vanilla-dist',
     });
-    workspace.ready().then(result => {
-      console.log(`Building app in ${result.appDestDir}`);
+    addons.ready().then(result => {
+      console.log(`Building into ${result.outputPath}`);
     });
   }
 
   if (process.env.STAGE1_ONLY) {
-    return workspace;
+    return addons;
   }
 
-  let embroiderApp = new App(emberApp, workspace, {
+  let embroiderApp = new App(emberApp, addons, {
     extraPublicTrees,
   });
 
