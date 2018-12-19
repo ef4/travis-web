@@ -4,7 +4,7 @@ import { Webpack } from '@embroider/webpack';
 import { Tree } from 'broccoli-plugin';
 const BroccoliWebpack = toBroccoliPlugin(Webpack);
 
-export default function(emberApp: object, extraPublicTrees: Tree[]) {
+export default function(emberApp: object, extraPublicTrees: Tree[]): Tree {
   let addons;
   if (process.env.REUSE_WORKSPACE) {
     addons = new PrebuiltAddons(__dirname, '/tmp/vanilla-dist');
@@ -18,7 +18,7 @@ export default function(emberApp: object, extraPublicTrees: Tree[]) {
   }
 
   if (process.env.STAGE1_ONLY) {
-    return addons;
+    return addons.tree;
   }
 
   let embroiderApp = new App(emberApp, addons, {
