@@ -95,6 +95,16 @@ module.exports = function () {
     return app.toTree(emojiAssets);
   }
 
-  const embroider = require('./embroider').default;
-  return embroider(app, [emojiAssets]);
+  const Webpack = require('@embroider/webpack').Webpack;
+  return require('@embroider/compat').compatBuild(app, Webpack, {
+    extraPublicTrees: [emojiAssets],
+    packagerOptions: {
+      webpackConfig: {
+        // workaround for https://github.com/jeremyfa/yaml.js/issues/102
+        node: {
+          fs: 'empty'
+        }
+      }
+    }
+  });
 };
