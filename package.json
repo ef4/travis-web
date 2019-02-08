@@ -20,6 +20,9 @@
   "devDependencies": {
     "@ember/jquery": "^0.5.2",
     "@ember/optional-features": "^0.6.3",
+    "@embroider/compat": "*",
+    "@embroider/core": "*",
+    "@embroider/webpack": "*",
     "active-model-adapter": "2.2.0",
     "ansiparse": "artursmirnov/ansiparse",
     "babel-eslint": "8.2.3",

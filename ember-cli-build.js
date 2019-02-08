@@ -90,7 +90,13 @@ module.exports = function () {
   importNpmDependency(app, 'node_modules/ansiparse/lib/ansiparse.js', 'amd');
   importNpmDependency(app, 'node_modules/yamljs/index.js');
 
-  return app.toTree(emojiAssets);
+  if (process.env.CLASSIC) {
+    return app.toTree(emojiAssets);
+  }
+  const Webpack = require('@embroider/webpack').Webpack;
+  return require('@embroider/compat').compatBuild(app, Webpack, {
+    extraPublicTrees: [emojiAssets]
+  });
 };
 
 function importNpmDependency(app, path, transformation = 'cjs', alias) {
