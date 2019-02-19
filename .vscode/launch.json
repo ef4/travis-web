@@ -9,7 +9,17 @@
       "request": "launch",
       "name": "Ember Build",
       "program": "${workspaceFolder}/node_modules/.bin/ember",
-      "args":[ "b" ]
+      "args":[ "b" ],
+      "env": {
+        "JOBS": "1"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Ember Serve",
+      "program": "${workspaceFolder}/node_modules/.bin/ember",
+      "args":[ "s" ]
     }
   ]
 }
