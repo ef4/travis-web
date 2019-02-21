@@ -5035,14 +5035,7 @@ ember-in-viewport@^3.0.0:
   dependencies:
     ember-cli-babel "^6.6.0"
 
-ember-inflector@^2.0.0, ember-inflector@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/ember-inflector/-/ember-inflector-2.3.0.tgz#94797eba0eea98d902aa1e5da0f0aeef6053317f"
-  integrity sha1-lHl+ug7qmNkCqh5doPCu72BTMX8=
-  dependencies:
-    ember-cli-babel "^6.0.0"
-
-"ember-inflector@^2.0.0 || ^3.0.0", ember-inflector@^3.0.0:
+ember-inflector@3.0.0, ember-inflector@^2.0.0, "ember-inflector@^2.0.0 || ^3.0.0", ember-inflector@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/ember-inflector/-/ember-inflector-3.0.0.tgz#7e1ee8aaa0fa773ba0905d8b7c0786354d890ee1"
   integrity sha512-tLWfYolZAkLnkTvvBkjizy4Wmj8yI8wqHZFK+leh0iScHiC3r1Yh5C4qO+OMGiBTMLwfTy+YqVoE/Nu3hGNkcA==
@@ -5354,15 +5347,7 @@ ember-web-app@^2.3.0:
     web-app-manifest-validator "^1.0.0"
     xmlbuilder "^9.0.4"
 
-ember-window-mock@^0.4.0:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/ember-window-mock/-/ember-window-mock-0.4.1.tgz#f294030c4574d42dabb740c31cef929fa8c5c9fb"
-  integrity sha1-8pQDDEV01C2rt0DDHO+Sn6jFyfs=
-  dependencies:
-    broccoli-funnel "^2.0.1"
-    ember-cli-babel "^6.6.0"
-
-ember-window-mock@^0.5.0:
+ember-window-mock@^0.4.0, ember-window-mock@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/ember-window-mock/-/ember-window-mock-0.5.0.tgz#76679bd750590948e99c5a6ae61084d949f514e7"
   integrity sha512-RvkOvxXj3RN2k5VDrs+/k7vPRD3q6tR0ttFI3bco4aXZz1zFl+/18W53lI8V2XeyHoyLpky5uHCc4cNLEX2cpA==

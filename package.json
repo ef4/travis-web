@@ -64,7 +64,7 @@
     "ember-feature-flags": "^5.0.0",
     "ember-fetch": "^6.0.0",
     "ember-in-viewport": "^3.0.0",
-    "ember-inflector": "^2.3.0",
+    "ember-inflector": "^3.0.0",
     "ember-intercom-io": "^1.2.0",
     "ember-keyboard-shortcuts": "^1.0.2",
     "ember-load-initializers": "^2.0.0",
@@ -106,5 +106,10 @@
   },
   "dependencies": {
     "watchman": "^1.0.0"
+  },
+  "resolutions": {
+    "active-model-adapter/ember-inflector": "3.0.0",
+    "ember-concurrency-scroll/ember-window-mock": "^0.5.0",
+    "@ember/test-helpers/ember-assign-polyfill": "2.6.0"
   }
 }
